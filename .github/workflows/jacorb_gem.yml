@@ -6,8 +6,6 @@ on:
 
 jobs:
   build:
-    name: Publish
-    steps:
     strategy:
       matrix:
         include:
