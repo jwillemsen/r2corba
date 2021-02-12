@@ -39,6 +39,10 @@ jobs:
     - uses: montudor/action-zip@v0.1.1
       with:
         args: unzip -qq jacorb-${{ matrix.jacorb_version }}.zip -d jacorb
+    - name: Run rake configure
+      run: |
+        rake configure
+      shell: pwsh
     - name: Run rake gem
       run: |
         rake gem
