@@ -18,6 +18,7 @@ jobs:
     name: ${{ matrix.os }}-${{ matrix.ruby }}-jacorb-${{ matrix.jacorb_version }}-${{ matrix.java-package }}-${{ matrix.java-version }}
     env:
       JACORB_HOME: ${{ github.workspace }}/jacorb/jacorb-${{ matrix.jacorb_version }}
+      RIDL_ROOT: ${{ github.workspace }}/ridl
     steps:
     - uses: ruby/setup-ruby@v1
       with:
@@ -29,6 +30,11 @@ jobs:
         architecture: 'x64'
     - name: checkout r2corba
       uses: actions/checkout@v2
+    - name: checkout ridl
+      uses: actions/checkout@v2
+      with:
+        repository: RemedyIT/ridl
+        path: ${{ env.RIDL_ROOT }}
     - name: Download a file
       uses: carlosperate/download-file-action@v1.0.3
       id: download-jacorb
